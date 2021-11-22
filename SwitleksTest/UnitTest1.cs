@@ -7,8 +7,14 @@ using System.Threading;
 
 namespace SwitleksTest
 {
+
     public class Tests
     {
+        public String loto()
+        {
+            string abc = "abc";
+            return abc;
+        }
         IWebDriver driver1;
           [SetUp]
         public void Setup()
@@ -38,16 +44,64 @@ namespace SwitleksTest
 
 
         }
-       // [Test]
-        public void Test2()
+
+
+        
+        [Test]
+        public void TestBuing()
+        {
+            Uri sklepUrl = new Uri("https://presta.bielinski.dev/pl/");
+            driver1.Navigate().GoToUrl(sklepUrl);
+            IWebElement search = driver1.FindElement(By.Name("s"));
+            search.SendKeys(loto());
+            search.Submit();
+
+            IWebElement product = driver1.FindElement(By.CssSelector("[data-id-product-attribute='0']"));
+            product.Click();
+
+            IWebElement button = driver1.FindElement(By.ClassName("add"));
+            button.Click();
+
+            IWebElement next = driver1.FindElement(By.ClassName("cart-content-btn"));
+            next.Click();
+           
+            search = driver1.FindElement(By.Name("s"));
+            search.SendKeys("lampa");
+            search.Submit();
+           
+
+             product = driver1.FindElement(By.CssSelector("[data-id-product-attribute='0']"));
+            product.Click();
+
+           button = driver1.FindElement(By.ClassName("add"));
+            button.Click();
+
+             next = driver1.FindElement(By.ClassName("cart-content-btn"));
+            next.Click();
+           
+        }
+
+
+
+          [Test]
+        public void TestMessageToSupport()
         {
             Uri sklepUrl = new Uri("https://presta.bielinski.dev/pl/");
             driver1.Navigate().GoToUrl(sklepUrl);
 
             IWebElement LogIn = driver1.FindElement(By.LinkText("Kontakt z nami"));
 
-            LogIn.Click();
+           LogIn.Click();
 
+            IWebElement YourEmail = driver1.FindElement(By.Id("email"));
+            YourEmail.SendKeys("mikolaj99x@gmail.com");
+            IWebElement text = driver1.FindElement(By.Name("message"));
+            text.SendKeys(loto());
+
+            IWebElement button = driver1.FindElement(By.Name("submitMessage"));
+            button.Click();
+            //szukanie po tekscie
+            IWebElement correct = driver1.FindElement(By.XPath("//*[contains(text(), 'Twoja wiadomoœæ zosta³a pomyœlnie wys³ana do obs³ugi.')]")); 
         }
 
 
@@ -89,7 +143,7 @@ namespace SwitleksTest
         public void QuitDriver()
         {
             Thread.Sleep(1000);
-            driver1.Quit();
+          //  driver1.Quit();
         }
     }
 }
