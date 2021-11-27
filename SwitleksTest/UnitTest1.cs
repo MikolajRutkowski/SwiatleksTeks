@@ -13,7 +13,13 @@ namespace SwitleksTest
         public String loto()
         {
             string abc = "abc";
-            Random rand = new Random();
+
+            var rand = new Random();
+
+            int x = rand.Next(1000, 100000);
+            abc = abc + x.ToString();
+            abc = abc + "@gmail.com";
+            
 
             return abc;
         }
@@ -64,7 +70,7 @@ namespace SwitleksTest
                 product.Click();
 
                 addProduct(2, driver1);
-
+            /*
                 product = driver1.FindElement(By.CssSelector("[data-id-product='101']"));
                 product.Click();
 
@@ -108,10 +114,55 @@ namespace SwitleksTest
                 product = driver1.FindElement(By.CssSelector("[data-id-product='37']"));
                 product.Click();
 
-                addProduct(20, driver1);
+                addProduct(20, driver1); 
+            */
             }
+           
+
             IWebElement bascet = driver1.FindElement(By.ClassName("shopping-cart"));
             bascet.Click();
+
+            IWebElement delete = driver1.FindElement(By.ClassName("remove-from-cart"));
+            delete.Click();
+
+            IWebElement next = driver1.FindElement(By.ClassName("btn-primary"));
+            next.Click();
+
+            IWebElement sex = driver1.FindElement(By.Id("field-id_gender-1"));
+            sex.Click();
+
+            IWebElement name = driver1.FindElement(By.Id("field-firstname"));
+            name.SendKeys("Jarek");
+
+            IWebElement sername = driver1.FindElement(By.Id("field-lastname"));
+            sername.SendKeys("Pieczarek");
+
+            IWebElement email = driver1.FindElement(By.Id("field-email"));
+            email.SendKeys(loto()) ;
+
+            IWebElement pasword = driver1.FindElement(By.Id("field-password"));
+            pasword.SendKeys("Test1234");
+
+            IWebElement date = driver1.FindElement(By.Id("field-birthday"));
+            date.SendKeys("1999-02-11");
+
+            IWebElement one = driver1.FindElement(By.Name("optin"));
+            one.Click();
+
+            IWebElement two = driver1.FindElement(By.Name("customer_privacy"));
+            two.Click();
+
+            IWebElement three = driver1.FindElement(By.Name("newsletter"));
+            three.Click();
+
+            IWebElement four = driver1.FindElement(By.Name("psgdpr"));
+            four.Click();
+
+            Thread.Sleep(300);
+
+            IWebElement continuee = driver1.FindElement(By.Name("continue"));
+            continuee.Click();
+
         }
 
         
@@ -141,12 +192,14 @@ namespace SwitleksTest
              product = driver1.FindElement(By.CssSelector("[data-id-product-attribute='0']"));
             product.Click();
 
-           button = driver1.FindElement(By.ClassName("add"));
+            button = driver1.FindElement(By.ClassName("add"));
             button.Click();
 
              next = driver1.FindElement(By.ClassName("cart-content-btn"));
             next.Click();
-           
+
+            
+
         }
 
 
