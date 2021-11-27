@@ -70,7 +70,8 @@ namespace SwitleksTest
                 product.Click();
 
                 addProduct(2, driver1);
-            
+            /*
+
                 product = driver1.FindElement(By.CssSelector("[data-id-product='101']"));
                 product.Click();
 
@@ -115,7 +116,7 @@ namespace SwitleksTest
                 product.Click();
 
                 addProduct(20, driver1); 
-            
+                */           
             }
            
 
@@ -125,7 +126,7 @@ namespace SwitleksTest
             IWebElement delete = driver1.FindElement(By.ClassName("remove-from-cart"));
             delete.Click();
 
-            IWebElement next = driver1.FindElement(By.ClassName("btn-primary"));
+            IWebElement next = driver1.FindElement(By.ClassName("cart-detailed-actions"));
             next.Click();
 
             IWebElement sex = driver1.FindElement(By.Id("field-id_gender-1"));
@@ -179,14 +180,17 @@ namespace SwitleksTest
             continue2.Click();
             IWebElement continue3 = driver1.FindElement(By.Name("confirmDeliveryOption"));
             continue3.Click();
-            IWebElement pay = driver1.FindElement(By.Id("payment-option-3"));
+            IWebElement pay = driver1.FindElement(By.Id("payment-option-2"));
             pay.Click();
             IWebElement ok = driver1.FindElement(By.Id("conditions_to_approve[terms-and-conditions]"));
             ok.Click();
-            driver1.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
+
+
+
+         //   driver1.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
             //btn btn-primary center-block
-            IWebElement confirm = driver1.FindElement(By.ClassName("btn-primary"));
-           confirm.Click();
+          //  IWebElement confirm = driver1.FindElement(By.ClassName("btn-primary"));
+          //  confirm.Click();
 
 
 
