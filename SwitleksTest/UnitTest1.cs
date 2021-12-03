@@ -44,8 +44,8 @@ namespace SwitleksTest
             driver1.Manage().Window.Position = new System.Drawing.Point(8, 30);
             driver1.Manage().Window.Size = new System.Drawing.Size(1500, 1000);
 
-            driver1.Manage().Timeouts().ImplicitWait = System.TimeSpan.FromSeconds(5);
-            driver1.Manage().Timeouts().PageLoad = System.TimeSpan.FromSeconds(5);
+            driver1.Manage().Timeouts().ImplicitWait = System.TimeSpan.FromSeconds(25);
+            driver1.Manage().Timeouts().PageLoad = System.TimeSpan.FromSeconds(25);
         }
         [Test]
         public void MainTest()
@@ -70,7 +70,7 @@ namespace SwitleksTest
                 product.Click();
 
                 addProduct(2, driver1);
-            /*
+            
 
                 product = driver1.FindElement(By.CssSelector("[data-id-product='101']"));
                 product.Click();
@@ -116,7 +116,7 @@ namespace SwitleksTest
                 product.Click();
 
                 addProduct(20, driver1); 
-                */           
+                           
             }
            
 
@@ -184,13 +184,14 @@ namespace SwitleksTest
             pay.Click();
             IWebElement ok = driver1.FindElement(By.Id("conditions_to_approve[terms-and-conditions]"));
             ok.Click();
+            IWebElement pay2 = driver1.FindElement(By.Id("payment-option-1"));
+            pay2.Click();
+            pay.Click();
 
 
-
-         //   driver1.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
             //btn btn-primary center-block
-          //  IWebElement confirm = driver1.FindElement(By.ClassName("btn-primary"));
-          //  confirm.Click();
+            IWebElement confirm = driver1.FindElement(By.XPath("/html/body/main/section/div/div/section/div/div[1]/section[4]/div/div[3]/div[1]/button"));
+           confirm.Click();
 
 
 
